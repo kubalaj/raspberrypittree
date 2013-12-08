@@ -7,7 +7,7 @@ body {
 position: fixed;
 top: 0;
 width: 100%;
-color: #ffffff;
+color: #594D56;
 height: 100px;
 text-align: center;
 padding-top: 50px;
@@ -22,25 +22,44 @@ color: rgba(1, 1, 1, 0.8);
 }
 
 #navigation a {
-font-size: 20px;
+font-size: 50px;
+font-family: cool_font;
 padding-top: 50px;
-padding-left: 15px;
-padding-right: 15px;
+padding-left: 30px;
+padding-right: 30px;
 color: white;
 text-decoration: none;
 }
 
 #navigation a:hover {
-color: grey;
+color: #F233C2;
 }
 
+
+
 #banner img {
-	top: 200px;
 	width:100%;
+	/*top: 100px;*/
 } 
+
+#about {
+	/*top: 100px;*/
+	color: #313332;
+	height: 100px;
+	width: 100%;
+	background-color: rgba(1, 1, 1, 0.8);
+	color: rgba(1, 1, 1, 0.8);
+}
+
+#about p{
+	font-family: cool_font;
+	color: white;
+	font-size: 50px;
+	padding-left: 30px;
+}
 
 
 @font-face {
 	font-family: cool_font;
-	src: url('Dense-Regular 3.otf');
+	src: url('Dense-Regular.otf');
 }
