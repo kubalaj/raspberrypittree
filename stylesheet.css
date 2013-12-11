@@ -1,6 +1,7 @@
 body {
 	padding: 0;
 	margin: 0;
+	/*background: #594D56;*/
 }
 
 #navigation {
@@ -35,27 +36,34 @@ text-decoration: none;
 color: #F233C2;
 }
 
+#banner{
 
-
-#banner img {
 	width:100%;
+	margin-bottom: 0px;
+	max-height: 900px;
 	/*top: 100px;*/
 } 
-
-#about {
-	/*top: 100px;*/
-	color: #313332;
-	height: 100px;
+#about h1{
 	width: 100%;
-	background-color: rgba(1, 1, 1, 0.8);
-	color: rgba(1, 1, 1, 0.8);
-}
-
-#about p{
+	padding-left: 20px;
+	background: black;
 	font-family: cool_font;
+	font-size: 70px;
 	color: white;
-	font-size: 50px;
+}
+#about p{
+	width: 900px;
+	padding-left: 20px;
+	background: white;
+	font-family: cool_font;
+	font-size: 40px;
+	letter-spacing: 2px;
+	color: black;
+}
+#mm{
+	width: 500px;
 	padding-left: 30px;
+	font-family: cool_font;
 }
 
 
