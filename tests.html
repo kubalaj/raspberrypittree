@@ -19,7 +19,7 @@
 		</div>	
 	
 		<div id="banner">
-				<img src="banner.png";></img>
+				<img widht="100%"; src="banner.png";></img>
 		</div>
 
 		<div id="about">
@@ -31,16 +31,17 @@
 				Once Out System was built we ran a series of tests 
 				to see what how our system Scaled compared to that of our super computer janus.
 
-	</div>
+
+		</div>
 				<!-- Matrix Multiple-->
 				<div id="mm">
-				<div  width="50px"; data-role="collapsible">
+				<div  width="500px"; data-role="collapsible">
   				<h1>Matrix Multiple</h1>
   				<p></p>
 				<!-- Simpson's-->
 				</div>
 				
-				<div  width="50px"; data-role="collapsible">
+				<div  width="100px"; data-role="collapsible">
   				<h1>Simpson's Integration</h1>
   				<p></p>
 				</div>
@@ -48,7 +49,11 @@
 			
 				<div  width="50px"; data-role="collapsible">
   				<h1>Jacobi</h1>
-  				<p></p>
+  				<p id="description">The Jacobi program is an algorthim for detirmining a the solution to a series of linear equaions. We then too the code wriiten for this solution executed and timed it on the Raspberry Pi cluster, using 1 and 4 processors. The same program was executed on Janus, our school's supercomputer.
+  				<br><br> As the problem size increased, the speedup noticed on the Pi cluster was about 2.5, while the speedup noticed on Janus was about 3.5.  
+  				<img src ="Jacobi_Speedup.png">
+  				<br><br> 
+  				We believe that this is due to large communication costs between the Raspberry Pis.  Instead of the infiniband network used on Janus, the Raspberry Pis were connected with simple1 Gbit/s Ethernet cables.  Compared to Janus, a single Raspberry Pi processor has about 25% of the clock speed.  However, the time to compute the Jacobi was about 20 times faster on a single core on Janus compared to a single Raspberry Pi.  We believe that the difference is due to better CPU pipelining and memory access on the Janus CPU.  The time to compute the Jacobi solution with four raspberry pis took about 30 times longer than with four cores on Janus.  We believe that the decrease in the performance of the raspberry pis is due to the increased communication cost associated with the slower network speed.  When compared to a single core on Janus, 4 raspberry pis working in parallel still took about 10 times longer to solve.</p>
 				</div>
 
 				
@@ -59,17 +64,81 @@
 
 				<div  width="50px"; data-role="collapsible">
   				<h1>Stream</h1>
-  				<p></p>
+  				<p id="description">    Stream Benchmark is a benchmark that measures memory bandwidth for a particular system. Stream adds the amount of data that the application reads and adds it to the amount of data the application writes.
+  					<br><br>    Out of all of the benchmarks ran stream was probably the easiest to install. Just follow the following 3 steps to install.
+  						<ul id="description">
+  							<li>Stream runs either with c or fortran, so make 
+  								sure that you either have a compiler that
+  								will compile either fortran or c</li>
+  								<br>
+  							<li>
+  								Next download the actual file which can be found <a href="http://www.cs.virginia.edu/stream/FTP/Code/stream.c">here</a>
+  								<br>
+  								<br>
+  							</li>
+  							<li>
+  								Then run the program and see the results! If you're
+  								using a compiler like gcc here is an example of how to run it.
+  								<br>
+  								<br>
+  								$ gcc -o stream.c stream
+  								<br>
+  							</li>
+  						</ul>
+  					<br>
+  				</p>
 				</div>
 
 				<div  width="50px"; data-role="collapsible">
   				<h1>NAS</h1>
-  				<p></p>
+  				<p id="description">NAS is a benchmark from NASA and is a set of 8 small programs
+  					to measure the result of supercomputers. Realize that most the simulations and use that NASA has for supercomputer are for computational fluid dynamics or CFD<br><br> here is a list of the test <br><br>
+  					<ul id="description">
+  						<li>
+  							IS - Integer Sort, random 
+  						</li>
+  						<li>
+  							EP - Embarrassingly Parallel
+  						</li>
+  						<li>
+  							CG - Conjugate Gradient, irregular memory access and communication
+  						</li>
+  						<li>
+  							MG- Multi-Grid on a sequence of meshes, long- and short- distance communication, memory intensive
+  						</li>
+  						<li>
+  							BT- Block Tri-diagonal solver
+  						</li>
+  						<li>
+  							SP- Scalar Penta - diagonal solver
+  						</li>
+  						<li>
+  							LU - Lower-Upper Gauss-Seidel solver
+  						</li>
+  					</ul>
+  					<br><br>
+  					<div id="description">Here is instructions on how to actually install NAS to test yur system.</div>
+  					<ul id="description">
+  						<li>Go to http://www.nas.nasa.gov/publications/npb.html and follow the instructions to download the benchmark. I used the NPB3.3 package. <br> You will need to create an account.</li>
+  						<li> Either download this package to the pi directly or scp it on to it.</li>
+  						<li>Extract the package into its own folder and navigate into the NPB3.3-MPI subdirectory.</li>
+  						<li>Navigate into the config directory and create make.def from make.def.template (you can use "cp make.def.template make.def") and open make.def in a text editor(you can use "nano make.def").</li>
+  						<li>Edit both the C MPI library flags and Fortran MPI library flags to be simply "-L/home/rpimpi/mpich2-install/lib". They should not have "-lmpi" after them.</li>
+  						<li>Create suite.def from suite.def.template in the same way you made make.def</li>
+  						<li>Edit suite.def to compile the tests you want. The file should have useful instructions and how to do this.</li>
+  						<li>Go back one directory and then type “make suite” to make your tests. This will take a minute or two.</li>
+  						<li>Navigate into the bin directory to make sure that your test compiled correctly.</li>
+  						<li>If you are running tests on more than one pi, you will need to copy the NPB3.3 (top level) directory onto the other pis that will help run the test. This can be done easily by navigating to the directory that the contains the NPB3.3 directory and running the command “rsync –rvaP NPB3.3 pi@[ip address of that pi]:[path to the NPB3.3 directory on this pi (assuming all other directories before it are also on that pi)]”.
+Run each selected using mpiexec –f [path to machinefile] –n [number of processors] [name of test]
+ </li>
+  					</ul>
+  				</p>
 				</div>
 
 				<div  width="50px"; data-role="collapsible">
   				<h1>LINPACK</h1>
-  				<p></p>
+  				<p>LINPACK benchmark is one of the most widley used benchmarks in the field of High Preformance Computing, and is also one of the most frustrating and diffiult benchmarks to run.<br><br>
+  					We as well as a slough of other people had issues running LINKPACK on both our school's supercomputer and our raspberry pi cluster<br><br>We see this as a general flaw in the system and are currently working on developing a standardized Linpack for PI's<br><br></p>
 				</div>
 			</div>
 

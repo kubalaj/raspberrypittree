@@ -61,9 +61,14 @@ color: #F233C2;
 	color: black;
 }
 #mm{
-	width: 500px;
+	width: 700px;
+	font-size: 10px;
 	padding-left: 30px;
 	font-family: cool_font;
+	letter-spacing: 4px;
+}
+#description{
+	font-size: 25px;
 }
 
 

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="stylesheet.css"/>
+		<title>University of Colorado Boulder Raspberry PI Tree</title>
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css">
+<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+	</head>
+	
+	<body>
+		
+		<div id ="navigation">
+			<a href="index.html">HOME</a>
+			<a href="#about_tab">ABOUT</a>
+			<a href"#">HOW TO</a>
+			<a href"#">EDUCATION</a>
+			<a href"#">TESTS</a>
+		</div>	
+	
+		<div id="banner">
+				<img src="banner.png";></img>
+		</div>
+
+		<div id="about">
+			<h1>
+				How to Build Your Cluster 
+			</h1>
+			<p>
+				So you are ready to take the plunge and build your own cluster. Although there are a lot of good tutorials out there the one that 
+				we used to build ours is from the Univsersity of South Hampton. Although, there tutorial was great there were still a couple of things that we needed to change for the system to work.
+				<br><br>Their tutorial can be found <a href="http://www.southampton.ac.uk/~sjc/raspberrypi/pi_supercomputer_southampton.htm">here.</a>
+				<br><br>
+				Below we have adpated their tutorial for what worked for us.  
+			</p>
+			<h1>OBTAIN THE MATERIALS</h1>
+			<p>Before we start anything you first need to get the requried materials listed below<br><br>
+			<ul>
+				<a href="http://www.amazon.com/Raspberry-Pi-Model-Revision-512MB/dp/B009SQQF9C/ref=sr_1_1?ie=UTF8&qid=1383240224&sr=8-1&keywords=raspberry+pi"><li>5 Raspberry Pi’s - $40.46 x 5 = $202.30</li></a><br>
+				<a href="http://www.amazon.com/Transcend-Class-Flash-Memory-TS8GSDHC10E/dp/B003VNKNEG/ref=sr_1_6?s=pc&ie=UTF8&qid=1383262473&sr=1-6&keywords=sd+cards"><li>5 Class 10 8GB SD cards - 8.99 * 5 = 44.95
+				</li></a><br>
+				<a href="http://www.amazon.com/AmazonBasics-Cat5e-Ethernet-Patch-Meters/dp/B001TH7GVE/ref=sr_1_1?ie=UTF8&qid=1383260119&sr=8-1&keywords=ethernet+cable"><li>5 Ethernet cables - 5.49 x 5 = 27.45</li></a><br>
+				<a href="http://www.amazon.com/VS228H-P-22-Inch-Full-HD-LED-Lit-Monitor/dp/B005BZNDOO/ref=sr_1_2?ie=UTF8&qid=1383260188&sr=8-2&keywords=Monitor "><li>1 Monitor = 137.99</li></a><br>
+				<a href="http://www.amazon.com/AmazonBasics-Wired-Keyboard-Mouse-Bundle/dp/B00B7GV802/ref=sr_1_2?ie=UTF8&qid=1383242203&sr=8-2&keywords=usb+keyboard+and+mouse "><li>USB keyboard and mouse = 14.99</li></a><br>
+				<a href="http://www.amazon.com/AmazonBasics-High-Speed-HDMI-Cable-Meter/dp/B00870ZHCQ/ref=sr_1_2?ie=UTF8&qid=1383242006&sr=8-2&keywords=hdmi+cable "><li>1 HDMI cable = 5.08</li></a><br>
+				<a href="http://www.amazon.com/Motorola-Wall-Charger-Micro-Cable/dp/B005LFXBJG/ref=sr_1_7?ie=UTF8&qid=1383241935&sr=8-7&keywords=micro+usb+cable 
+				"><li>5 Micro USB cords with AC power 5 x 6.68 = 33.40</li></a><br>
+				<a href="http://www.amazon.com/Tripp-Lite-TLP606-Protector-Outlet/dp/B0000AI0N1/ref=sr_1_1?ie=UTF8&qid=1383241905&sr=8-1&keywords=power+strip "><li>1 Power strip = 8.50</li></a><br>
+				<a href="http://www.amazon.com/NETGEAR-ProSafe-Gigabit-Ethernet-Desktop/dp/B0000BVYT3/ref=sr_1_3?ie=UTF8&qid=1383241783&sr=8-3&keywords=12+port+ethernet+cable+switch "><li>5 Port Switch = 34.99</li></a><br>
+			</ul>	
+
+			</p>
+			<p>
+				TOTAL COST = 510.34
+			</p>
+			<h1>
+				BUILDING THE CLUSTER
+			</h1>
+			<p>
+				Okay so you've made the commitment of buying all the materials. Now comes the time to actually building your cluster.
+				<ul>
+					<li>Download the Disk Image of the PI<br><br>
+						There are a lot of ways of doing this. The 
+						way that we suggest that work best is to download the NOOBS (new out of the box) toolkit from the raspberry pi website found <a href="http://www.raspberrypi.org/downloads">here</li></a><br>
+					<li>Once you download that it is highly suggest from both us and the Raspberry PI website that you use an SD card formatter. The one we used, and the one that Raspberry PI suggests found <a href="https://www.sdcard.org/downloads/formatter_4/">here</a></li><br>
+					<li>After you put the Noobs toolkit on it your card is formatted go ahead and drag and drop the NOOBS file onto your SD card. The southhampton tutorial suggests you use <a href="http://www.softpedia.com/get/CD-DVD-Tools/Data-CD-DVD-Burning/Win32-Disk-Imager.shtml">win32</a> if you are using a PC or Disk Utility when using a mac. We found that dragging and dropping the image did work, so give it a try!</li><br>
+					<li>Next put the SD card into the bottom of the pi. Plug in you HDMI cable to your monitor, Plug your USB mouse/keyboard into the USB slots, and finally plug your power into a power strip and turn on the PI shuld boot up<br></li><br>
+					<img src="raspberryblue.jpg" width="300px">
+					<li>You will next find that your PI will give you a list of possible operating systems to boot up. The operating system we suggest is the wheesy-raspian operating system(the one with the picture of a funny cat). Also make sure that you install a the correct language at the bottom of the PI. Although installing UK system on a US keyboard seems fun, trust us there is a difference.</li><br>
+			</p>
+			<p>After that your are done setting up your pi as a single computer. You may be thinking at this point that you will need to do this for each pi you plan you us on our cluster, but we will show you later down how to clone this drive so that you only have to do this once.</p>
+			<h1>
+				Setting up Parallism
+			</h1>
+			<p>
+				Now comes the fun part setting everything up with MPI<br><br>
+				MPI is a library found in c or fortran that enables comunication between diffeerent computers.
+				<ul>
+					<li>First make sure that your PI is up to date open the <br><br>
+						$ sudo apt-get update<br><br> incase you don't understand sudo in this command, this will allow to get acces to change anything you need. Sometimes when installing things the command line will spit back premission denied. By typing sudo before the command this will allow you make changes</li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</p>
+		</div>
+	</body>
+	</html>
