@@ -132,6 +132,7 @@
 Run each selected using mpiexec –f [path to machinefile] –n [number of processors] [name of test]
  </li>
   					</ul>
+            here is a list of our results
   				</p>
 				</div>
 
@@ -141,6 +142,13 @@ Run each selected using mpiexec –f [path to machinefile] –n [number of proce
   					We as well as a slough of other people had issues running LINKPACK on both our school's supercomputer and our raspberry pi cluster<br><br>We see this as a general flaw in the system and are currently working on developing a standardized Linpack for PI's<br><br></p>
 				</div>
 			</div>
+
+            <div  width="50px"; data-role="collapsible">
+          <h1>MPIBench</h1>
+          <p>MPIBench is a set of benchmarks coming out of the University of Tennessee Knoxville that measures the performance of the basic MPI functions, such as reduce, send, and receive. It is integrated into the LLCBench set of benchmarks. Installing the benchmark on the Pis and Janus was as simple as the NAS Benchmarks: the Readme was once again clear and the only customization that was required was changing the MPI compile command in the benchmark’s “user.def” file to manually link to the MPI library (as described in the “Initial Setup Issues” section). Once again, in order for the benchmark to complete in a reasonable amount of time, we kept the maximum message size small (216). 
+    The results of the benchmark (shown below) can help partially explain the immense gap in performance between Janus and the Pis: the gap in bandwidth between Janus and the Pis was around two orders of magnitude, suggesting that one of the primary reasons for the difference in performance could be the slower communication between the Pis. However, the fact that the gap between the Pis and Janus in the NAS benchmarks increased only slightly when increasing the number of processors suggests that communication is not one of the main reasons for the Pis slower performance, and that the Pis’ slower communication is at least partially a result of the Pis themselves being slower.</p>
+        </div>
+      </div>
 
 
 			</p>
