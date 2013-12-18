@@ -37,13 +37,15 @@
 				<div id="mm">
 				<div  width="500px"; data-role="collapsible">
   				<h1>Matrix Multiple</h1>
-  				<p></p>
+  				<p>The MPI matrix multiply program that was written for class (which implemented Cannon’s Algorithm) was also run on the Pi’s and Janus with 1 and 4 cores. The code that was executed on both systems was identical with the exception of the block size used by the algorithm, which was instead optimized for each system (the Pi’s block size was set to 32 while Janus’s block size was set to 128). Expectedly, the program ran significantly slower on the Pi’s than it did on Janus, with Janus performing 26 times faster on for a problem size of 2500x2500 on a single core, but only 21 times faster on four cores. Thus, the speedup was greater on the Pi’s than it was on Janus: at a matrix size of 2500x2500, Janus showed a speedup of a 1.8 while that of the Pi’s was 2.2. 
+    We suspect that the primary reason for the difference in speedup is that the Pis see greater performance benefits from splitting up the matrix into pieces. When splitting the matrix up, a higher percentage of the matrix can fit in cache than what can fit when a single Pi is running that same matrix. As a result, fewer cache misses would occur, thus increasing performance. Janus, due to its substantially larger cache sizes, would already be able to fit a significant portion of the matrix into cache with only a single core and thus see a much smaller performance improvement from splitting the matrix up into sections. Correspondingly, we believe that if we continued to increase the problem size, we would eventually see the speedup on Janus exceed that of the Pis due to its faster communication. The trend shown by the speedup graph further bolsters this claim.</p>
 				<!-- Simpson's-->
 				</div>
 				
 				<div  width="100px"; data-role="collapsible">
   				<h1>Simpson's Integration</h1>
-  				<p></p>
+  				<p>The code used to implement Simpson's rule takes as input the lower bound and upper bound along the x axis. This region is split into N subintervals which are operated on using the rule. Finer the interval range, closer is the approximation. This rule lends itself nicely to MPI since the range of intervals can be split over a number of processors. The more intervals, the better is the computation to communication ratio. The root node collects the partial results from the other nodes and sums them up to obtain the desired result.
+The Simpsons MPI code from class was used to benchmark the cluster's performance against Janus' cores. As is evident from the figure, the cluster benefits greatly from execution on multiple node, as does Janus (although this may be more difficult to see). The time taken by 2 nodes on the cluster is half of the time taken when run on a single node. However, the speedup is negligible beyond 4 nodes on the Pis, although there is only extra message to be sent. We can only speculate on why this is, but it could possibly happen if one node is slower than the rest when running on five nodes, in which case the program would run for longer as it is waiting for that node. Also, this lack of scaling on 5 cores does not occur on Janus.</p>
 				</div>
 				<!--Jacobi-->
 			
@@ -59,7 +61,9 @@
 				
 				<div  width="50px"; data-role="collapsible">
   				<h1>Matrix Multiple</h1>
-  				<p></p>
+  				<p>The MPI matrix multiply program that was written for class (which implemented Cannon’s Algorithm) was also run on the Pi’s and Janus with 1 and 4 cores. The code that was executed on both systems was identical with the exception of the block size used by the algorithm, which was instead optimized for each system (the Pi’s block size was set to 32 while Janus’s block size was set to 128). Expectedly, the program ran significantly slower on the Pi’s than it did on Janus, with Janus performing 26 times faster on for a problem size of 2500x2500 on a single core, but only 21 times faster on four cores. Thus, the speedup was greater on the Pi’s than it was on Janus: at a matrix size of 2500x2500, Janus showed a speedup of a 1.8 while that of the Pi’s was 2.2. 
+    We suspect that the primary reason for the difference in speedup is that the Pis see greater performance benefits from splitting up the matrix into pieces. When splitting the matrix up, a higher percentage of the matrix can fit in cache than what can fit when a single Pi is running that same matrix. As a result, fewer cache misses would occur, thus increasing performance. Janus, due to its substantially larger cache sizes, would already be able to fit a significant portion of the matrix into cache with only a single core and thus see a much smaller performance improvement from splitting the matrix up into sections. Correspondingly, we believe that if we continued to increase the problem size, we would eventually see the speedup on Janus exceed that of the Pis due to its faster communication. The trend shown by the speedup graph further bolsters this claim.
+</p>
 				</div>
 
 				<div  width="50px"; data-role="collapsible">
